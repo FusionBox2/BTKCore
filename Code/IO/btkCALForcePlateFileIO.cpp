@@ -39,7 +39,7 @@
 #include "btkMetaDataUtils.h"
 #include "btkLogger.h"
 
-#include <Eigen/Geometry>
+#include <btkEigen/Eigen/Geometry>
 
 #include <algorithm>
 #include <cctype>

@@ -39,7 +39,7 @@
 #include "btkDataObject.h"
 #include "btkLogger.h"
 
-#include <Eigen/Core>
+#include <btkEigen/Eigen/Core>
 #include <string>
 
 namespace btk

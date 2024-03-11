@@ -116,7 +116,7 @@
 #define EIGEN_DENSEBASE_PLUGIN <btkEigen/Plugin/DenseBaseAddons.h>
 #define EIGEN_VECTOROP_PLUGIN <btkEigen/Plugin/VectorOpAddons.h>
 #include "btkEigen/Plugin/ForwardDeclarations.h"
-#include <Eigen/Core>
+#include <btkEigen/Eigen/Core>
 #include "btkEigen/Plugin/Functors.h"
 
 #endif // __btkConfigure_h

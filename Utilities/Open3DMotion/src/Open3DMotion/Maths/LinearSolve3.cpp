@@ -16,7 +16,7 @@ extern "C"
 #include <clapack.h>
 }
 #else
-#include <Eigen/Dense>
+#include <btkEigen/Eigen/Dense>
 #endif
 
 namespace Open3DMotion

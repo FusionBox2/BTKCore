@@ -35,7 +35,7 @@
 
 #include "btkWrenchDirectionAngleFilter.h"
 
-#include <Eigen/Geometry>
+#include <btkEigen/Eigen/Geometry>
 
 namespace btk
 {

@@ -41,7 +41,7 @@
 #include "btkForcePlatformTypes.h"
 #include "btkWrenchCollection.h"
 
-#include <Eigen/Geometry>
+#include <btkEigen/Eigen/Geometry>
 
 namespace btk
 {
