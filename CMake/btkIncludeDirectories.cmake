@@ -18,7 +18,6 @@ SET(BTK_INCLUDE_RELATIVE_DIRS ${BTK_INCLUDE_RELATIVE_DIRS}
   BasicFilters
   Common
   IO
-  Utilities
 )
 
 # Because embedded Eigen3 library is required in lots of header of BTK.
