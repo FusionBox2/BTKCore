@@ -41,9 +41,9 @@ namespace btk
   void FillAcquisitionFromOpen3DMotion_p(Acquisition::Pointer output, const std::string& filename, std::ifstream& ifs,
                                           Open3DMotion::MotionFileHandler& handler, const Open3DMotion::MotionFileFormatList& formatlist)
   {
-    std::auto_ptr<Open3DMotion::TreeValue> trialcontents(handler.Read(ifs, formatlist));
+    std::unique_ptr<Open3DMotion::TreeValue> trialcontents(handler.Read(ifs, formatlist));
     // Build trial
-    std::auto_ptr<Open3DMotion::Trial> trial(new Open3DMotion::Trial);
+    std::unique_ptr<Open3DMotion::Trial> trial(new Open3DMotion::Trial);
     trial->FromTree(trialcontents.get());
     // Retrieve sequences (analog & marker)
     std::vector<const Open3DMotion::TimeSequence*> o3dm_markers;
