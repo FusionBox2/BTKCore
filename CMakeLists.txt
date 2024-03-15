@@ -13,6 +13,7 @@ SET(BTK_VERSION_STRING "${BTK_VERSION_MAJOR}.${BTK_VERSION_MINOR}.${BTK_VERSION_
 # this variable is used to create lib/share/include folders where the patch number does 
 # not need to be included.
 SET(BTK_LIBRARY_VERSION_STRING "${BTK_VERSION_MAJOR}.${BTK_VERSION_MINOR}")
+SET(CMAKE_CXX_STANDARD 17)
 
 # ------------------------------------------------------------------------
 # COMPILATION INSTRUCTIONS
