@@ -125,7 +125,7 @@ namespace btk
     PointCollection::Pointer output = this->GetOutput();
     output->Clear();
     WrenchCollection::Pointer input = this->GetInput();
-    const double radToDeg = 180.0 / M_PI;
+    const double radToDeg = 45.0 / atan(1.0);
     if (input)
     {
       for (WrenchCollection::ConstIterator it = input->Begin() ; it != input->End() ; ++it)
