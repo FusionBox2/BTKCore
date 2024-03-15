@@ -9,14 +9,8 @@
 # We want this to happen only in the BTKConfig.cmake of the build dir, not in the
 # installed or relocatable one.
 
-# The library dependencies file.
-SET(BTK_LIBRARY_DEPENDS_FILE  ${BTK_BINARY_DIR}/BTKLibraryDepends.cmake)
-
 # The "use" file.
 SET(BTK_USE_FILE ${BTK_BINARY_DIR}/UseBTK.cmake)
-
-# The build settings file.
-SET(BTK_BUILD_SETTINGS_FILE ${BTK_BINARY_DIR}/BTKBuildSettings.cmake)
 
 # Library directory.
 SET(BTK_LIBRARY_DIRS_CONFIG ${BTK_LIBRARY_PATH})
@@ -35,14 +29,8 @@ CONFIGURE_FILE(${BTK_CMAKE_MODULE_PATH}/BTKConfig.cmake.in
 #---------------------------------------------------------------------------
 # Settings specific to the install tree.
 
-# The library dependencies file.
-SET(BTK_LIBRARY_DEPENDS_FILE "\${BTK_INSTALL_PREFIX}${BTK_INSTALL_SHARE_DIR}/BTKLibraryDepends.cmake")
-
 # The "use" file.
 SET(BTK_USE_FILE \${BTK_INSTALL_PREFIX}${BTK_INSTALL_SHARE_DIR}/UseBTK.cmake)
-
-# The build settings file.
-SET(BTK_BUILD_SETTINGS_FILE \${BTK_INSTALL_PREFIX}${BTK_INSTALL_SHARE_DIR}/BTKBuildSettings.cmake)
 
 # Include directories.
 SET(BTK_INCLUDE_DIRS_CONFIG \${BTK_INSTALL_PREFIX}${BTK_INSTALL_INCLUDE_DIR})

@@ -1,6 +1,6 @@
 # First release build with CMAKE 2.6.2.
 # The prior versions of CMAKE have not been tested
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.2)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 # BTK: Biomechanical ToolKit
 PROJECT(BTK)
 
@@ -364,13 +364,6 @@ ENDIF(NOT BTK_INSTALL_NO_DEVELOPMENT)
 
 CONFIGURE_FILE(${BTK_CMAKE_MODULE_PATH}/UseBTK.cmake.in
                ${BTK_BINARY_DIR}/UseBTK.cmake COPYONLY IMMEDIATE)
-
-# Save the compiler settings so another project can import them.
-INCLUDE(${CMAKE_ROOT}/Modules/CMakeExportBuildSettings.cmake)
-CMAKE_EXPORT_BUILD_SETTINGS(${BTK_BINARY_DIR}/BTKBuildSettings.cmake)
-
-# Save library dependencies.
-EXPORT_LIBRARY_DEPENDENCIES(${BTK_BINARY_DIR}/BTKLibraryDepends.cmake)
 
 # Create the BTKConfig.cmake file containing the BTK configuration.
 INCLUDE (${BTK_CMAKE_MODULE_PATH}/btkGenerateBTKConfig.cmake)
