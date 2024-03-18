@@ -48,7 +48,7 @@
     #error Processor not supported
   #endif
 #elif defined __GNUC__
-  #if defined __i386__ || defined __x86_64__
+  #if defined __i386__ || defined __x86_64__ || defined __arm64 
     #define PROCESSOR_TYPE 1 /* IEEE_LittleEndian */
   #elif defined __vax__
     #define PROCESSOR_TYPE 2 /* VAX_LittleEndian */
@@ -283,7 +283,7 @@ namespace btk
 #elif PROCESSOR_TYPE == 2 /* VAX_LittleEndian */
     return *reinterpret_cast<float const*>(byteptr);
 #else
-    char foo[4] = {byteptr[2], byteptr[3], byteptr[0], byteptr[1] - 1 * (byteptr[1] == 0 ? 0 : 1)};
+    char foo[4] = {byteptr[2], byteptr[3], byteptr[0], static_cast<char>(byteptr[1] - 1 * (byteptr[1] == 0 ? 0 : 1))};
     return *reinterpret_cast<float const*>(foo);
 #endif
   };
@@ -302,7 +302,7 @@ namespace btk
 #elif PROCESSOR_TYPE == 2 /* VAX_LittleEndian */
     return *reinterpret_cast<double const*>(byteptr);
 #else
-    char foo[8] = {byteptr[6], byteptr[7], byteptr[4], byteptr[5], byteptr[2], byteptr[3], byteptr[0], byteptr[1] - 1 * (byteptr[1] == 0 ? 0 : 1)};
+    char foo[8] = {byteptr[6], byteptr[7], byteptr[4], byteptr[5], byteptr[2], byteptr[3], byteptr[0], static_cast<char>(byteptr[1] - 1 * (byteptr[1] == 0 ? 0 : 1))};
     return *reinterpret_cast<double const*>(foo);
 #endif
   };
@@ -391,7 +391,7 @@ namespace btk
 #elif PROCESSOR_TYPE == 2 /* VAX_LittleEndian */
     dest->write(byteptr, 4);
 #else
-    char foo[4] = {byteptr[2], byteptr[3] + 1 * (byteptr[3] == 0 ? 0 : 1), byteptr[0], byteptr[1]};
+    char foo[4] = {byteptr[2], static_cast<char>(byteptr[3] + 1 * (byteptr[3] == 0 ? 0 : 1)), byteptr[0], byteptr[1]};
     dest->write(foo, 4);
 #endif
   };
