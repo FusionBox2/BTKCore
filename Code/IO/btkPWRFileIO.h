@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~PWRFileIOException() throw() {};
+    virtual ~PWRFileIOException() noexcept {};
   };
   
   class PWRFileIO : public AcquisitionFileIO

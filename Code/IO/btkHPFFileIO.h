@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~HPFFileIOException() throw() {};
+    virtual ~HPFFileIOException() noexcept {};
   };
   
   class HPFFileIO : public AcquisitionFileIO

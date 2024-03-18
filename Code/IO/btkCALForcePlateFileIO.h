@@ -50,7 +50,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~CALForcePlateFileIOException() throw() {};
+    virtual ~CALForcePlateFileIOException() noexcept {};
   };
   
   class CALForcePlateFileIO : public AcquisitionFileIO

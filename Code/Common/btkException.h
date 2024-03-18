@@ -57,12 +57,12 @@ namespace btk
     /**
      * Destructor
      */
-    virtual ~Exception() throw() {};
+    virtual ~Exception() noexcept {};
     
     /**
      * Gets the exception's message
      */
-    virtual const char* what() const throw()
+    virtual const char* what() const noexcept
     {
       return mWhat.c_str();
     };
@@ -89,7 +89,7 @@ namespace btk
     /**
      * Destructor
      */
-    virtual ~LogicError() throw() {}
+    virtual ~LogicError() noexcept {}
   };
 
 
@@ -110,7 +110,7 @@ namespace btk
     /**
      * Destructor
      */
-    virtual ~OutOfRangeException() throw() {}
+    virtual ~OutOfRangeException() noexcept {}
   };
   
   /**
@@ -130,7 +130,7 @@ namespace btk
     /**
      * Destructor
      */
-    virtual ~DomainError() throw() {}
+    virtual ~DomainError() noexcept {}
   };
   
   /**
@@ -149,7 +149,7 @@ namespace btk
     /**
      * Destructor
      */
-    virtual ~RuntimeError() throw() {}
+    virtual ~RuntimeError() noexcept {}
   };
 };
 

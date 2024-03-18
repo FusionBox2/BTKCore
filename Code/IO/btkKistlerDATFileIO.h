@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~KistlerDATFileIOException() throw() {};
+    virtual ~KistlerDATFileIOException() noexcept {};
   };
   
   class KistlerDATFileIO : public AcquisitionFileIO

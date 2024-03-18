@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~ANGFileIOException() throw() {};
+    virtual ~ANGFileIOException() noexcept {};
   };
   
   class ANGFileIO : public AcquisitionFileIO

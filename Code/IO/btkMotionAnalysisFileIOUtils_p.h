@@ -50,7 +50,7 @@ namespace btk
     : Exception(msg)
     {};
 
-    virtual ~ANxFileIOException() throw() {};
+    virtual ~ANxFileIOException() noexcept {};
   };
   
   void ANxFileIOCheckHeader_p(double preciseRate, size_t channelNumber, 

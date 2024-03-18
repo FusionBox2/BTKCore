@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~DelsysEMGFileIOException() throw() {};
+    virtual ~DelsysEMGFileIOException() noexcept {};
   };
   
   class DelsysEMGFileIO : public AcquisitionFileIO

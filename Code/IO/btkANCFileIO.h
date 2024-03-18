@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~ANCFileIOException() throw() {};
+    virtual ~ANCFileIOException() noexcept {};
   };
   
   class ANCFileIO : public AcquisitionFileIO

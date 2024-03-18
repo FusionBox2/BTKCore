@@ -50,7 +50,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~AcquisitionFileWriterException() throw() {};
+    virtual ~AcquisitionFileWriterException() noexcept {};
   };
   
   class AcquisitionFileWriter : public ProcessObject

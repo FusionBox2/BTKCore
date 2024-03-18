@@ -58,7 +58,7 @@ namespace btk
     : Exception(msg)
     {};
 
-    virtual ~CodamotionFileIOException() throw() {};
+    virtual ~CodamotionFileIOException() noexcept {};
   };
   
   void FillAcquisitionFromOpen3DMotion_p(Acquisition::Pointer output, const std::string& filename, std::ifstream& ifs,

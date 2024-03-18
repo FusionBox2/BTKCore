@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~XLSOrthoTrakFileIOException() throw() {};
+    virtual ~XLSOrthoTrakFileIOException() noexcept {};
   };
   
   class XLSOrthoTrakFileIO : public AcquisitionFileIO

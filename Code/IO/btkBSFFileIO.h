@@ -54,7 +54,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~BSFFileIOException() throw() {};
+    virtual ~BSFFileIOException() noexcept {};
   };
   
   class IEEELittleEndianBinaryFileStream;

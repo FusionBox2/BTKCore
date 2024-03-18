@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~RICFileIOException() throw() {};
+    virtual ~RICFileIOException() noexcept {};
   };
   
   class RICFileIO : public AcquisitionFileIO

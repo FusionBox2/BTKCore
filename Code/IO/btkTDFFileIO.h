@@ -52,7 +52,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~TDFFileIOException() throw() {};
+    virtual ~TDFFileIOException() noexcept {};
   };
   
   class TDFFileIO : public AcquisitionFileIO

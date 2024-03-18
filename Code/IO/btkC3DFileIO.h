@@ -49,7 +49,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~C3DFileIOException() throw() {};
+    virtual ~C3DFileIOException() noexcept {};
   };
   
   class C3DFileIO : public AcquisitionFileIO

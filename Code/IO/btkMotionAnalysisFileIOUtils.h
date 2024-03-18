@@ -55,7 +55,7 @@ namespace btk
     : Exception(msg)
     {};
 
-    virtual ~MotionAnalysisBinaryFileIOException() throw() {};
+    virtual ~MotionAnalysisBinaryFileIOException() noexcept {};
   };
 
   // For ANB/TRB files

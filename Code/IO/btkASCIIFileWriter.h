@@ -51,7 +51,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~ASCIIFileWriterException() throw() {};
+    virtual ~ASCIIFileWriterException() noexcept {};
   };
   
   class ASCIIFileWriter : public ProcessObject

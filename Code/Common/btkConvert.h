@@ -66,7 +66,7 @@ namespace btk
     {}
     
     /** Destructor. */
-    virtual ~ConversionError() throw() {}
+    virtual ~ConversionError() noexcept {}
   };
   
   

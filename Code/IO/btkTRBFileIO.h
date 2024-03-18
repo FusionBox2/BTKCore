@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~TRBFileIOException() throw() {};
+    virtual ~TRBFileIOException() noexcept {};
   };
   
   class TRBFileIO : public MotionAnalysisBinaryFileIO

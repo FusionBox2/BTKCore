@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~ANBFileIOException() throw() {};
+    virtual ~ANBFileIOException() noexcept {};
   };
   
   class ANBFileIO : public MotionAnalysisBinaryFileIO

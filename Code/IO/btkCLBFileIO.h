@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~CLBFileIOException() throw() {};
+    virtual ~CLBFileIOException() noexcept {};
   };
   
   class CLBFileIO : public AcquisitionFileIO

@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~XMOVEFileIOException() throw() {};
+    virtual ~XMOVEFileIOException() noexcept {};
   };
   
   class XMOVEFileIO : public AcquisitionFileIO

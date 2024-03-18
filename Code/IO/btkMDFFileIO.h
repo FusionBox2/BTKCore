@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~MDFFileIOException() throw() {};
+    virtual ~MDFFileIOException() noexcept {};
   };
   
   class MDFFileIO : public AcquisitionFileIO

@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~GRxFileIOException() throw() {};
+    virtual ~GRxFileIOException() noexcept {};
   };
   
   class GRxFileIO : public AcquisitionFileIO

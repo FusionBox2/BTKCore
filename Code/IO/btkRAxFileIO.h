@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~RAxFileIOException() throw() {};
+    virtual ~RAxFileIOException() noexcept {};
   };
   
   class RAxFileIO : public AcquisitionFileIO

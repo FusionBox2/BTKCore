@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~EMxFileIOException() throw() {};
+    virtual ~EMxFileIOException() noexcept {};
   };
   
   class EMxFileIO : public AcquisitionFileIO

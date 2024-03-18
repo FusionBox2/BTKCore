@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~TRCFileIOException() throw() {};
+    virtual ~TRCFileIOException() noexcept {};
   };
   
   class TRCFileIO : public AcquisitionFileIO

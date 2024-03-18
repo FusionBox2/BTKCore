@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~MOMFileIOException() throw() {};
+    virtual ~MOMFileIOException() noexcept {};
   };
   
   class MOMFileIO : public AcquisitionFileIO

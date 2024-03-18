@@ -48,7 +48,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~EMFFileIOException() throw() {};
+    virtual ~EMFFileIOException() noexcept {};
   };
   
   class EMFFileIO : public AcquisitionFileIO

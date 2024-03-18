@@ -50,7 +50,7 @@ namespace btk
     : Exception(msg)
     {};
       
-    virtual ~MultiSTLFileWriterException() throw() {};
+    virtual ~MultiSTLFileWriterException() noexcept {};
   };
   
   class MultiSTLFileWriter : public ProcessObject
