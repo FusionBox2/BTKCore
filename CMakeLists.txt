@@ -2,18 +2,14 @@
 # The prior versions of CMAKE have not been tested
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 # BTK: Biomechanical ToolKit
-PROJECT(BTK)
+PROJECT(BTK VERSION 0.5.0)
 
 # BTK version number.
-SET(BTK_VERSION_MAJOR 0)
-SET(BTK_VERSION_MINOR 4dev)
-SET(BTK_VERSION_PATCH 0)
 SET(BTK_VERSION_STRING "${BTK_VERSION_MAJOR}.${BTK_VERSION_MINOR}.${BTK_VERSION_PATCH}")
 # The major.minor is enough to distinguish available features of the toolkit. Moreover, 
 # this variable is used to create lib/share/include folders where the patch number does 
 # not need to be included.
 SET(BTK_LIBRARY_VERSION_STRING "${BTK_VERSION_MAJOR}.${BTK_VERSION_MINOR}")
-SET(CMAKE_CXX_STANDARD 17)
 
 # ------------------------------------------------------------------------
 # COMPILATION INSTRUCTIONS
@@ -70,39 +66,6 @@ ENDIF( (CMAKE_SIZEOF_VOID_P EQUAL 8) OR CMAKE_CL_64)
 
 # Try to find mmap
 CHECK_INCLUDE_FILE(sys/mman.h HAVE_SYS_MMAP)
-
-# Find the header memory[.hpp] in specific path.
-# This header contains the share_ptr class.
-CHECK_INCLUDE_FILE_CXX(memory HAVE_SYS_MEMORY_H)
-CHECK_INCLUDE_FILE_CXX(tr1/memory HAVE_SYS_TR1_MEMORY_H)
-CHECK_INCLUDE_FILE(boost/memory.hpp HAVE_BOOST_MEMORY_HPP)
-CHECK_INCLUDE_FILE(boost/tr1/memory.hpp HAVE_BOOST_TR1_MEMORY_HPP)
-IF (NOT HAVE_BOOST_MEMORY_HPP AND NOT HAVE_BOOST_TR1_MEMORY_HPP)
-  IF(MSVC AND MSVC_VERSION LESS 1500)
-    SET(USE_INCLUDED_BOOST 1)
-  ELSEIF(UNIX AND NOT HAVE_SYS_TR1_MEMORY_H)
-    SET(USE_INCLUDED_BOOST 1)
-  ENDIF(MSVC AND MSVC_VERSION LESS 1500)
-  IF(USE_INCLUDED_BOOST)
-    SET(BTK_INCLUDE_DIRS_BUILD_TREE ${BTK_INCLUDE_DIRS_BUILD_TREE} ${BTK_SOURCE_DIR}/Utilities/boost)
-  ENDIF(USE_INCLUDED_BOOST)
-ENDIF (NOT HAVE_BOOST_MEMORY_HPP AND NOT HAVE_BOOST_TR1_MEMORY_HPP)
-
-# Macro to detect if a CMake variable exist or not
-MACRO(CHECK_CMAKE_VARIABLE invar outvar)
-  IF(${invar})
-    SET(${outvar} 1)
-  ELSE(${invar})
-    SET(${outvar})
-  ENDIF(${invar})
-ENDMACRO(CHECK_CMAKE_VARIABLE)
-# Check for the atomic timestamp
-FIND_PACKAGE(Threads)
-CHECK_CMAKE_VARIABLE(CMAKE_USE_SPROC_INIT HAVE_SPROC)
-CHECK_CMAKE_VARIABLE(CMAKE_USE_WIN32_THREADS_INIT HAVE_WIN32_THREADS)
-CHECK_CMAKE_VARIABLE(CMAKE_USE_PTHREADS_INIT HAVE_PTHREADS)
-CHECK_CMAKE_VARIABLE(CMAKE_HP_PTHREADS_INIT HAVE_HP_PTHREADS)
-INCLUDE(${BTK_CMAKE_MODULE_PATH}/btkTestAtomicBuiltins.cmake) # HAVE_ATOMIC_BUILTINS
 
 # Extra compiler flags for the debug mode
 INCLUDE(${BTK_CMAKE_MODULE_PATH}/btkExtraCompilerFlags.cmake)
