@@ -39,12 +39,7 @@
 #include <string>
 #include <vector>
 
-// MSVC doesn't have the header stdint.h
-#ifdef _MSC_VER
-  #include "Utilities/stdint.h"
-#else
-  #include <stdint.h>
-#endif
+#include <stdint.h>
 
 namespace btk
 {

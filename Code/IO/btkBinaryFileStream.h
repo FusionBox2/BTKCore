@@ -54,12 +54,7 @@
 #include <string>
 #include <vector>
 
-// MSVC doesn't have the header stdint.h
-#ifdef _MSC_VER
-  #include "Utilities/stdint.h"
-#else
-  #include <stdint.h>
-#endif
+#include <stdint.h>
 
 // _btk_choose_native_binary_file_stream macro
 #if PROCESSOR_TYPE == 1

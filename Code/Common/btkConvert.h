@@ -44,11 +44,7 @@
 #include <iomanip>
 #include <limits>
 
-#ifdef _MSC_VER
-  #include "Utilities/stdint.h"
-#else
-  #include <stdint.h>
-#endif
+#include <stdint.h>
 
 // This code is largely inspired of http://www.parashift.com/c++-faq-lite/misc-technical-issues.html
 

@@ -42,11 +42,7 @@
 #include <string>
 #include <vector>
 
-#ifdef _MSC_VER
-  #include "Utilities/stdint.h"
-#else
-  #include <stdint.h>
-#endif
+#include <stdint.h>
 
 namespace btk
 {
