@@ -34,15 +34,8 @@
  */
 
 #include "btkObject.h"
-#include "btkCriticalSection_p.h"
 
-// OSAtomic.h optimizations only used in 10.5 and later
-#if defined(__APPLE__)
-  #include <AvailabilityMacros.h>
-  #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1050
-    #include <libkern/OSAtomic.h>
-  #endif
-#endif
+#include <atomic>
 
 namespace btk
 {
@@ -79,41 +72,12 @@ namespace btk
    */
   void Object::Modified()
   {
-#if defined(WIN32) || defined(_WIN32)
-    // Windows optimization
-  #if defined(HAVE_64_BIT) 
-    static LONGLONG _atomic_time = 0;
-    this->m_Timestamp = (unsigned long)InterlockedIncrement64(&_atomic_time);
-  #else
-    static LONG _atomic_time = 0;
-    this->m_Timestamp = (unsigned long)InterlockedIncrement(&_atomic_time);
-  #endif
-#elif defined(__APPLE__) && (MAC_OS_X_VERSION_MIN_REQUIRED >= 1050)
-    // Mac optimization
-  #if defined(HAVE_64_BIT) 
-    // NOTE: Comment from VTK library
-    // "m_Timestamp" is "unsigned long", a type that changes sizes
-    // depending on architecture.  The atomic increment is safe, since it
-    // operates on a variable of the exact type needed.  The cast does not
-    // change the size, but does change signedness, which is not ideal.
-    static volatile int64_t _atomic_time = 0;
-    this->m_Timestamp = (unsigned long)OSAtomicIncrement64Barrier(&_atomic_time);
-  #else
-    static volatile int32_t _atomic_time = 0;
-    this->m_Timestamp = (unsigned long)OSAtomicIncrement32Barrier(&_atomic_time);
-  #endif
-#elif defined(HAVE_ATOMIC_BUILTINS)
-    // GCC and CLANG intrinsics
-    static volatile unsigned long _atomic_time = 0;
-    this->m_Timestamp = __sync_add_and_fetch(&_atomic_time, 1);
+#if defined(HAVE_64_BIT) 
+    static std::atomic<uint64_t> GlobalTimeStamp(0U);
 #else
-    // General case
-    static unsigned long _atomic_time = 0;
-    static btk_critical_section_p _critical_section;
-    _critical_section.Lock();
-    this->m_Timestamp = ++_atomic_time;
-    _critical_section.Unlock();
+    static std::atomic<uint32_t> GlobalTimeStamp(0U);
 #endif
+    this->m_Timestamp = (unsigned long)++GlobalTimeStamp;
   };
   
   /**
