@@ -112,7 +112,7 @@ IF(NOT BTK_INSTALL_BIN_DIR)
 ENDIF(NOT BTK_INSTALL_BIN_DIR)
 
 IF(NOT BTK_INSTALL_LIB_DIR)
-  SET(BTK_INSTALL_LIB_DIR "lib/btk-${BTK_LIBRARY_VERSION_STRING}")
+  SET(BTK_INSTALL_LIB_DIR "lib")
 ENDIF(NOT BTK_INSTALL_LIB_DIR)
 
 IF(NOT BTK_INSTALL_SHARE_DIR)
@@ -124,7 +124,7 @@ IF(NOT BTK_INSTALL_INCLUDE_DIR)
 ENDIF(NOT BTK_INSTALL_INCLUDE_DIR)
 
 IF(NOT BTK_INSTALL_PACKAGE_DIR)
-  SET(BTK_INSTALL_PACKAGE_DIR ${BTK_INSTALL_LIB_DIR}
+  SET(BTK_INSTALL_PACKAGE_DIR ${BTK_INSTALL_LIB_DIR}/cmake/btk-${BTK_LIBRARY_VERSION_STRING}
     CACHE INTERNAL "")
 ENDIF(NOT BTK_INSTALL_PACKAGE_DIR)
 
@@ -285,24 +285,39 @@ ADD_SUBDIRECTORY(Packaging)
 # INSTALLATION INSTRUCTIONS
 # ------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
+# Interface target to collect all BTK libraries
+#-----------------------------------------------------------------------------
+add_library(BTK INTERFACE)
+target_link_libraries(BTK INTERFACE ${BTK_LIBRARIES})
+install(TARGETS BTK EXPORT BTKTargets)
+
 IF(NOT BTK_INSTALL_NO_DEVELOPMENT)
   INSTALL(FILES ${BTK_BINARY_DIR}/btkConfigure.h
     DESTINATION ${BTK_INSTALL_INCLUDE_DIR}
     COMPONENT Development)
 ENDIF(NOT BTK_INSTALL_NO_DEVELOPMENT)
 
-CONFIGURE_FILE(${BTK_CMAKE_MODULE_PATH}/UseBTK.cmake.in
-               ${BTK_BINARY_DIR}/UseBTK.cmake COPYONLY IMMEDIATE)
-
-# Create the BTKConfig.cmake file containing the BTK configuration.
-INCLUDE (${BTK_CMAKE_MODULE_PATH}/btkGenerateBTKConfig.cmake)
-
 IF(NOT BTK_INSTALL_NO_DEVELOPMENT)
-  INSTALL(FILES
-    ${BTK_CMAKE_MODULE_PATH}/FindBTK.cmake
-    ${BTK_BINARY_DIR}/UseBTK.cmake
-    DESTINATION ${BTK_INSTALL_SHARE_DIR}
-    COMPONENT Development
+  install(EXPORT BTKTargets
+          NAMESPACE "${PROJECT_NAME}::"
+          DESTINATION ${BTK_INSTALL_PACKAGE_DIR}
+  )
+
+  include(CMakePackageConfigHelpers)
+  configure_package_config_file(Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    INSTALL_DESTINATION ${BTK_INSTALL_PACKAGE_DIR}
+  )
+
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    VERSION 1.2.3
+    COMPATIBILITY SameMajorVersion )
+
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+                ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+          DESTINATION ${BTK_INSTALL_PACKAGE_DIR}
   )
 ENDIF(NOT BTK_INSTALL_NO_DEVELOPMENT)
 
