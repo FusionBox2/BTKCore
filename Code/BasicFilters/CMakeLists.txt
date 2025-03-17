@@ -16,6 +16,18 @@ SET(BTKBasicFilters_SRCS
 ADD_LIBRARY(BTKBasicFilters ${BTK_LIBS_BUILD_TYPE} ${BTKBasicFilters_SRCS})
 SET(BTK_LIBRARIES ${BTK_LIBRARIES} "BTKBasicFilters" CACHE INTERNAL "BTK modules compiled")
 
+target_include_directories(BTKBasicFilters PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${BTK_INSTALL_INCLUDE_DIR}/BasicFilters>
+)
+target_include_directories(BTKBasicFilters PUBLIC
+  $<BUILD_INTERFACE:${BTK_SOURCE_DIR}/Utilities/eigen3>
+  $<INSTALL_INTERFACE:${BTK_INSTALL_INCLUDE_DIR}/Utilities>
+)
+target_include_directories(BTKBasicFilters PUBLIC
+  $<BUILD_INTERFACE:${BTK_BINARY_DIR}>
+  $<INSTALL_INTERFACE:${BTK_INSTALL_INCLUDE_DIR}>
+)
 TARGET_LINK_LIBRARIES(BTKBasicFilters BTKCommon)
 
 IF(BTK_LIBRARY_PROPERTIES)

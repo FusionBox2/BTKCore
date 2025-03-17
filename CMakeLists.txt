@@ -69,16 +69,6 @@ CHECK_INCLUDE_FILE(sys/mman.h HAVE_SYS_MMAP)
 
 # Extra compiler flags for the debug mode
 INCLUDE(${BTK_CMAKE_MODULE_PATH}/btkExtraCompilerFlags.cmake)
-# The entire BTK tree should use the same include path
-# Create the list of include directories needed for BTK header files.
-INCLUDE(${BTK_CMAKE_MODULE_PATH}/btkIncludeDirectories.cmake)
-# This should be the only INCLUDE_DIRECTORIES command in the entire
-# tree, except for the Utilities and Wrapping directories.  We need to
-# do this in one place to make sure the order is correct.
-INCLUDE_DIRECTORIES(
-  ${BTK_INCLUDE_DIRS_BUILD_TREE}
-  ${BTK_INCLUDE_DIRS_SYSTEM}
-)
 
 # BTK build configuration options.
 OPTION(BUILD_SHARED_LIBS "Build BTK with shared libraries." OFF)
