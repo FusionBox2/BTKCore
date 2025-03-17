@@ -1,7 +1,7 @@
 IF(NOT BTK_INSTALL_NO_DEVELOPMENT)
   # btkEigen
   INSTALL(DIRECTORY ${BTK_SOURCE_DIR}/Utilities/eigen3/btkEigen
-          DESTINATION ${BTK_INSTALL_INCLUDE_DIR_CM24}/Utilities
+          DESTINATION ${BTK_INSTALL_INCLUDE_DIR}/Utilities
           COMPONENT Development
           PATTERN ".svn" EXCLUDE
           PATTERN ".DS_Store" EXCLUDE)

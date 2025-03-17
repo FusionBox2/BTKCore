@@ -93,24 +93,24 @@ ENDIF(SCILAB_ROOT)
 
 IF(NOT BTK_INSTALL_NO_LIBRARIES)
   INSTALL(DIRECTORY ${BTK_SOURCE_DIR}/Documentation/Wrapping/Scilab/btk
-          DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Scilab  
+          DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Scilab  
           COMPONENT Development
           PATTERN ".svn" EXCLUDE
           PATTERN ".DS_Store" EXCLUDE)
 
   INSTALL(FILES ${GATEWAY_LOADER}
-    DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Scilab/btk/sci_gateway
+    DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Scilab/btk/sci_gateway
     COMPONENT Development)
 
 # Because CMake copy btk.lib on windows and is not necessary
 IF(WIN32)
   INSTALL(TARGETS ${SCILAB_TOOLBOX_NAME}
-    RUNTIME DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Scilab/btk/sci_gateway COMPONENT RuntimeLibraries)
+    RUNTIME DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Scilab/btk/sci_gateway COMPONENT RuntimeLibraries)
 ELSE(WIN32)
   INSTALL(TARGETS ${SCILAB_TOOLBOX_NAME}
-    LIBRARY DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Scilab/btk/sci_gateway COMPONENT RuntimeLibraries)
+    LIBRARY DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Scilab/btk/sci_gateway COMPONENT RuntimeLibraries)
 ENDIF(WIN32)
 
-  INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${SCILAB_BINARY} -nw -f \"${CMAKE_INSTALL_PREFIX}/${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Scilab/btk/builder.sce\")")
+  INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${SCILAB_BINARY} -nw -f \"${CMAKE_INSTALL_PREFIX}/${BTK_INSTALL_SHARE_DIR}/Wrapping/Scilab/btk/builder.sce\")")
 ENDIF(NOT BTK_INSTALL_NO_LIBRARIES)
 

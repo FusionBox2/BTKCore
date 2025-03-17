@@ -71,7 +71,7 @@ IF(NOT BTK_INSTALL_NO_LIBRARIES)
     ${BTK_SOURCE_DIR}/Documentation/Wrapping/Matlab/btk/btkGetVersion.m.in
     ${BTK_BINARY_DIR}/Documentation/Wrapping/Matlab/btk/btkGetVersion.m)
   INSTALL(FILES ${BTK_BINARY_DIR}/Documentation/Wrapping/Matlab/btk/btkGetVersion.m
-          DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Matlab/btk
+          DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Matlab/btk
           COMPONENT Development)
   # Documentation install
   # Main document file with BTK version
@@ -79,11 +79,11 @@ IF(NOT BTK_INSTALL_NO_LIBRARIES)
     ${BTK_SOURCE_DIR}/Documentation/Wrapping/Matlab/btk/Contents.m.in
     ${BTK_BINARY_DIR}/Documentation/Wrapping/Matlab/btk/Contents.m)
   INSTALL(FILES ${BTK_BINARY_DIR}/Documentation/Wrapping/Matlab/btk/Contents.m
-          DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Matlab/btk
+          DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Matlab/btk
           COMPONENT Development)
   # Whole documentation
   INSTALL(DIRECTORY ${BTK_SOURCE_DIR}/Documentation/Wrapping/Matlab/btk
-          DESTINATION ${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Matlab  
+          DESTINATION ${BTK_INSTALL_SHARE_DIR}/Wrapping/Matlab  
           COMPONENT Development
           PATTERN ".svn" EXCLUDE
           PATTERN "*.in" EXCLUDE
@@ -93,12 +93,12 @@ IF(NOT BTK_INSTALL_NO_LIBRARIES)
   # Fix a problem with this installation method and the use of the MS Visual Studio generators.
   IF(CMAKE_CXX_COMPILER MATCHES "^.*cl$")
     INSTALL(DIRECTORY "${BTK_LIBRARY_PATH}/@BUILD_TYPE@/"
-            DESTINATION "${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Matlab/btk"
+            DESTINATION "${BTK_INSTALL_SHARE_DIR}/Wrapping/Matlab/btk"
             COMPONENT Development
             FILES_MATCHING PATTERN "*.${MATLAB_MEXFILE_EXT}")
   ELSE(CMAKE_CXX_COMPILER MATCHES "^.*cl$")
     INSTALL(DIRECTORY "${BTK_LIBRARY_PATH}/"
-            DESTINATION "${BTK_INSTALL_SHARE_DIR_CM24}/Wrapping/Matlab/btk"
+            DESTINATION "${BTK_INSTALL_SHARE_DIR}/Wrapping/Matlab/btk"
             COMPONENT Development
             FILES_MATCHING PATTERN "*.${MATLAB_MEXFILE_EXT}")
   ENDIF(CMAKE_CXX_COMPILER MATCHES "^.*cl$")
